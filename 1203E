@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+
+	int n;
+	cin >> n;
+	vector<int> numbers(n);
+	for(int i = 0; i < n; i++) {
+
+		cin >> numbers[i];
+
+	}
+
+	sort(numbers.begin(), numbers.end());
+	set<int> answer;
+
+	for(int i = 0; i < n; i++) {
+
+		int save = answer.size();
+		if(numbers[i] > 1) {
+
+			answer.insert(numbers[i] - 1);
+			if(save == answer.size()) {
+
+				answer.insert(numbers[i]);
+				if(save == answer.size()) {
+
+					answer.insert(numbers[i] + 1);
+
+				}
+
+			}
+
+		} else {
+
+			answer.insert(numbers[i]);
+			if(save == answer.size()) {
+
+				answer.insert(numbers[i] + 1);
+
+			}
+
+		}
+
+	}
+
+	cout << answer.size();
+
+}
